@@ -63,11 +63,11 @@ function criarCardEvento(evento) {
         `R$ ${evento.precoDoEvento.toFixed(2)}` : 'Grátis';
 
     const icone = obterIconePorTipo(evento.tipoDoEvento);
-    const IMG = obterImagemPorTipo(evento.tipoDoEvento);    
+    const IMG = obterImagemPorTipo(evento.tipoDoEvento);  
+    const corCategoria = obterCorPorTipo(evento.tipoDoEvento);  
     
     col.innerHTML = `
         <div class="card evento-card h-100 shadow-sm position-relative overflow-hidden text-white">
-            <!-- Fundo da imagem -->
             <div class="card-background" style="
                 background-image: url('${IMG}');
                 background-size: cover;
@@ -78,7 +78,6 @@ function criarCardEvento(evento) {
                 z-index: 0;
             "></div>
 
-            <!-- Cabeçalho colorido -->
             <div class="card-header bg-danger text-white position-relative" style="z-index: 2;">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="card-title mb-0">${evento.nomeEvento}</h6>
