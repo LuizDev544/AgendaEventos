@@ -63,30 +63,45 @@ function criarCardEvento(evento) {
         `R$ ${evento.precoDoEvento.toFixed(2)}` : 'Grátis';
 
     const icone = obterIconePorTipo(evento.tipoDoEvento);
+    const IMG = obterImagemPorTipo(evento.tipoDoEvento);    
     
     col.innerHTML = `
-        <div class="card evento-card h-100 shadow-sm">
-            <div class="card-header bg-danger text-white">
+        <div class="card evento-card h-100 shadow-sm position-relative overflow-hidden text-white">
+            <!-- Fundo da imagem -->
+            <div class="card-background" style="
+                background-image: url('${IMG}');
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                inset: 0;
+                opacity: 0.8;
+                z-index: 0;
+            "></div>
+
+            <!-- Cabeçalho colorido -->
+            <div class="card-header bg-danger text-white position-relative" style="z-index: 2;">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="card-title mb-0">${evento.nomeEvento}</h6>
-                    <span>${icone}</span>
+                    <span class="fs-4">${icone}</span>
                 </div>
             </div>
-            <div class="card-body d-flex flex-column">
-                <p class="card-text flex-grow-1">${evento.descricaoDoEvento || 'Sem descrição'}</p>
+
+            <!-- Conteúdo -->
+            <div class="card-content position-relative p-3" style="z-index: 1;">
+                <p class="card-text">${evento.descricaoDoEvento || 'Sem descrição'}</p>
                 
                 <div class="evento-info mt-auto">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <small class="text-muted">
+                        <small>
                             <i class="bi bi-calendar-event"></i> ${dataFormatada}
                         </small>
-                        <small class="text-muted">
+                        <small>
                             <i class="bi bi-clock"></i> ${evento.duracaoDoEvento || 'Não informado'}
                         </small>
                     </div>
                     
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <small class="text-muted">
+                        <small>
                             <i class="bi bi-geo-alt"></i> ${evento.localDoEvento}
                         </small>
                     </div>
@@ -99,12 +114,12 @@ function criarCardEvento(evento) {
                 
                 ${evento.apresentadorDoEvento ? `
                     <div class="mt-2 pt-2 border-top">
-                        <small class="text-muted">
+                        <small>
                             <strong>Apresentador:</strong> ${evento.apresentadorDoEvento}
                         </small>
                     </div>
                 ` : ''}
-                
+
                 ${evento.tipoDoEvento ? `
                     <div class="mt-1">
                         <span class="badge bg-secondary">${evento.tipoDoEvento}</span>
@@ -136,17 +151,17 @@ function obterImagemPorTipo(tipo) {
     const imagens = {
         'Show': 'imagem/Domino.webp',
         'Palestra': 'imagem/Palestra.jpg',
-        'Workshop': 'imagem/Workshop.png',
-        'Teatro': 'imagem/Teatro.png',
-        'Esportivo': 'imagem/Esportivo.png',
-        'Cultural': 'imagem/Cultural.png',
+        'Workshop': 'imagem/workshop.jpg',
+        'Teatro': 'imagem/Teatro.jpg',
+        'Esportivo': 'imagem/SonicBugado.webp',
+        'Cultural': 'imagem/Cultural.jpg',
         'Musical': 'imagem/Musical.png',
-        'Acadêmico': 'imagem/Academico.png',
-        'Festival': 'imagem/Festival.png',
-        'Feira': 'imagem/Feira.png'
+        'Acadêmico': 'imagem/academico.jpg',
+        'Festival': 'imagem/Festival.webp',
+        'Feira': 'imagem/SoKquiGrandao.gif'
     };
 
-    if (!tipo) return 'imagem/default.png';
+    if (!tipo) return 'imagem/freedy.png';
 
     for (const [key, caminho] of Object.entries(imagens)) {
         if (tipo.toLowerCase().includes(key.toLowerCase())) {
@@ -156,7 +171,6 @@ function obterImagemPorTipo(tipo) {
 
     return 'imagem/freedy.png';
 }
-
 
 function obterIconePorTipo(tipo) {
     const icones = {
@@ -205,7 +219,6 @@ function filtrarEventos(termo) {
         }
     });
     
-    // Mostra mensagem se não encontrar nada
     const semResultados = document.getElementById('semResultados');
     if (encontrados === 0 && termo !== '') {
         if (!semResultados) {
