@@ -74,7 +74,7 @@ function criarCardEvento(evento) {
                 background-position: center;
                 position: absolute;
                 inset: 0;
-                opacity: 0.8;
+                opacity: 0.4;
                 z-index: 0;
             "></div>
 
@@ -154,8 +154,8 @@ function obterImagemPorTipo(tipo) {
         'Workshop': 'imagem/workshop.jpg',
         'Teatro': 'imagem/Teatro.jpg',
         'Esportivo': 'imagem/SonicBugado.webp',
-        'Cultural': 'imagem/Cultural.jpg',
-        'Musical': 'imagem/Musical.png',
+        'Cultural': 'imagem/SuperIdol.gif',
+        'Musical': 'imagem/Yeee.gif',
         'Acadêmico': 'imagem/academico.jpg',
         'Festival': 'imagem/Festival.webp',
         'Feira': 'imagem/SoKquiGrandao.gif'
