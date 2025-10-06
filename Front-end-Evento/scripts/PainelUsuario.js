@@ -132,6 +132,32 @@ function formatarData(dataString) {
     }
 }
 
+function obterImagemPorTipo(tipo) {
+    const imagens = {
+        'Show': 'imagem/Domino.webp',
+        'Palestra': 'imagem/Palestra.jpg',
+        'Workshop': 'imagem/Workshop.png',
+        'Teatro': 'imagem/Teatro.png',
+        'Esportivo': 'imagem/Esportivo.png',
+        'Cultural': 'imagem/Cultural.png',
+        'Musical': 'imagem/Musical.png',
+        'Acadêmico': 'imagem/Academico.png',
+        'Festival': 'imagem/Festival.png',
+        'Feira': 'imagem/Feira.png'
+    };
+
+    if (!tipo) return 'imagem/default.png';
+
+    for (const [key, caminho] of Object.entries(imagens)) {
+        if (tipo.toLowerCase().includes(key.toLowerCase())) {
+            return caminho;
+        }
+    }
+
+    return 'imagem/freedy.png';
+}
+
+
 function obterIconePorTipo(tipo) {
     const icones = {
         'Show': '🎵' ,
@@ -157,7 +183,6 @@ function obterIconePorTipo(tipo) {
     return '🎉';
 }
 
-// Busca em tempo real
 document.querySelector('form[role="search"]').addEventListener('submit', function(e) {
     e.preventDefault();
     const termo = this.querySelector('input[type="search"]').value.toLowerCase();
