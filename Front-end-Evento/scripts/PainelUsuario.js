@@ -63,11 +63,11 @@ function criarCardEvento(evento) {
         `R$ ${evento.precoDoEvento.toFixed(2)}` : 'Grátis';
 
     const icone = obterIconePorTipo(evento.tipoDoEvento);
-    const IMG = obterImagemPorTipo(evento.tipoDoEvento);    
+    const IMG = obterImagemPorTipo(evento.tipoDoEvento);  
+    const corCategoria = obterCorPorTipo(evento.tipoDoEvento);  
     
     col.innerHTML = `
         <div class="card evento-card h-100 shadow-sm position-relative overflow-hidden text-white">
-            <!-- Fundo da imagem -->
             <div class="card-background" style="
                 background-image: url('${IMG}');
                 background-size: cover;
@@ -78,8 +78,7 @@ function criarCardEvento(evento) {
                 z-index: 0;
             "></div>
 
-            <!-- Cabeçalho colorido -->
-            <div class="card-header bg-danger text-white position-relative" style="z-index: 2;">
+            <div class="card-header ${corCategoria} text-white position-relative" style="z-index: 2;">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="card-title mb-0">${evento.nomeEvento}</h6>
                     <span class="fs-4">${icone}</span>
@@ -122,11 +121,10 @@ function criarCardEvento(evento) {
 
                 ${evento.tipoDoEvento ? `
                     <div class="mt-1">
-                        <span class="badge bg-secondary">${evento.tipoDoEvento}</span>
+                        <span class="badge ${corCategoria.replace('card-header ', '')}">${evento.tipoDoEvento}</span>
                     </div>
                 ` : ''}
             </div>
-        </div>
     `;
     
     return col;
@@ -170,6 +168,31 @@ function obterImagemPorTipo(tipo) {
     }
 
     return 'imagem/freedy.png';
+}
+
+function obterCorPorTipo(tipo) {
+    const cores = {
+        'Show': 'bg-show',
+        'Palestra': 'bg-palestra',
+        'Workshop': 'bg-workshop',
+        'Teatro': 'bg-teatro',
+        'Esportivo': 'bg-esportivo',
+        'Cultural': 'bg-cultural',
+        'Musical': 'bg-musical',
+        'Acadêmico': 'bg-academico',
+        'Festival': 'bg-festival',
+        'Feira': 'bg-feira'
+    };
+    
+    if (!tipo) return 'bg-default';
+
+    for (const [key, cor] of Object.entries(cores)) {
+        if (tipo.toLowerCase().includes(key.toLowerCase())) {
+            return `card-header ${cor}`;
+        }
+    }
+    
+    return 'card-header bg-default';
 }
 
 function obterIconePorTipo(tipo) {
