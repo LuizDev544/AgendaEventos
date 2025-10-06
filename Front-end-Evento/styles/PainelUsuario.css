@@ -15,7 +15,7 @@ body {
 }
 
 .categorias .categoria i {
-    color: #ff4500;
+    color: #ff4500 ;
     margin-bottom: 8px;
 }
 
@@ -75,4 +75,61 @@ body {
     width: 40px;
     height: 40px;
     margin-bottom: 0.5rem;
+}
+
+.card-header.bg-show {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+}
+
+.card-header.bg-palestra {
+    background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+}
+
+.card-header.bg-workshop {
+    background: linear-gradient(135deg, #45b7d1, #96c93d) !important;
+}
+
+.card-header.bg-teatro {
+    background: linear-gradient(135deg, #f093fb, #f5576c) !important;
+}
+
+.card-header.bg-esportivo {
+    background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+}
+
+.card-header.bg-cultural {
+    background: linear-gradient(135deg, #a8edea, #fed6e3) !important;
+    color: #333 !important;
+}
+
+.card-header.bg-musical {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+.card-header.bg-academico {
+    background: linear-gradient(135deg, #f093fb, #f5576c) !important;
+}
+
+.card-header.bg-festival {
+    background: linear-gradient(135deg, #ffd89b, #19547b) !important;
+}
+
+.card-header.bg-feira {
+    background: linear-gradient(135deg, #a1c4fd, #c2e9fb) !important;
+    color: #333 !important;
+}
+
+.card-header.bg-default {
+    background: linear-gradient(135deg, #667eea, #764ba2) !important;
+}
+
+/* Ajuste para garantir contraste de texto */
+.card-header.bg-cultural .card-title,
+.card-header.bg-feira .card-title {
+    color: #333 !important;
+}
+
+.card-header .card-title {
+    color: white !important;
+    font-weight: 600;
 }

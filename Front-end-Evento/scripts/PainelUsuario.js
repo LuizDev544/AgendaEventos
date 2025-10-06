@@ -34,8 +34,7 @@ function exibirEventos(eventos) {
     const container = document.getElementById('listaEventos');
     const loading = document.getElementById('loading');
     const semEventos = document.getElementById('semEventos');
-    
-    // Esconde loading
+
     loading.style.display = 'none';
     
     if (!eventos || eventos.length === 0) {
@@ -58,15 +57,13 @@ function criarCardEvento(evento) {
     col.className = 'col-md-6 col-lg-4 col-xl-3';
 
     const dataFormatada = formatarData(evento.dataDoEvento);
-
-    const precoFormatado = evento.precoDoEvento > 0 ? 
-        `R$ ${evento.precoDoEvento.toFixed(2)}` : 'Grátis';
-
+    const precoFormatado = evento.precoDoEvento > 0 ? `R$ ${evento.precoDoEvento.toFixed(2)}` : 'Grátis';
     const icone = obterIconePorTipo(evento.tipoDoEvento);
+    const corCategoria = obterCorPorTipo(evento.tipoDoEvento);
     
     col.innerHTML = `
         <div class="card evento-card h-100 shadow-sm">
-            <div class="card-header bg-danger text-white">
+            <div class="card-header ${corCategoria} text-white">
                 <div class="d-flex justify-content-between align-items-center">
                     <h6 class="card-title mb-0">${evento.nomeEvento}</h6>
                     <span>${icone}</span>
@@ -90,6 +87,12 @@ function criarCardEvento(evento) {
                             <i class="bi bi-geo-alt"></i> ${evento.localDoEvento}
                         </small>
                     </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <small class="text-muted">
+                            <i class="bi bi-geo-alt"></i> ${evento.tipoDoEvento}
+                        </small>
+                    </div>
                     
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="badge bg-success">${precoFormatado}</span>
@@ -107,7 +110,7 @@ function criarCardEvento(evento) {
                 
                 ${evento.tipoDoEvento ? `
                     <div class="mt-1">
-                        <span class="badge bg-secondary">${evento.tipoDoEvento}</span>
+                        <span class="badge ${corCategoria.replace('card-header ', '')}">${evento.tipoDoEvento}</span>
                     </div>
                 ` : ''}
             </div>
@@ -130,6 +133,31 @@ function formatarData(dataString) {
     } catch (error) {
         return dataString;
     }
+}
+
+function obterCorPorTipo(tipo) {
+    const cores = {
+        'Show': 'bg-show',
+        'Palestra': 'bg-palestra',
+        'Workshop': 'bg-workshop',
+        'Teatro': 'bg-teatro',
+        'Esportivo': 'bg-esportivo',
+        'Cultural': 'bg-cultural',
+        'Musical': 'bg-musical',
+        'Acadêmico': 'bg-academico',
+        'Festival': 'bg-festival',
+        'Feira': 'bg-feira'
+    };
+    
+    if (!tipo) return 'bg-default';
+
+    for (const [key, cor] of Object.entries(cores)) {
+        if (tipo.toLowerCase().includes(key.toLowerCase())) {
+            return `card-header ${cor}`;
+        }
+    }
+    
+    return 'card-header bg-default';
 }
 
 function obterIconePorTipo(tipo) {
@@ -157,7 +185,6 @@ function obterIconePorTipo(tipo) {
     return '🎉';
 }
 
-// Busca em tempo real
 document.querySelector('form[role="search"]').addEventListener('submit', function(e) {
     e.preventDefault();
     const termo = this.querySelector('input[type="search"]').value.toLowerCase();
@@ -179,8 +206,7 @@ function filtrarEventos(termo) {
             pai.style.display = 'none';
         }
     });
-    
-    // Mostra mensagem se não encontrar nada
+
     const semResultados = document.getElementById('semResultados');
     if (encontrados === 0 && termo !== '') {
         if (!semResultados) {

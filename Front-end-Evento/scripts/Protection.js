@@ -32,7 +32,7 @@ async function protegerRota(roleRequerido = null) {
             return false;
         }
 
-        console.log("✅ Proteção: Acesso permitido para", data.usuario);
+        console.log("Proteção: Acesso permitido para", data.usuario);
         return true;
         
     } catch (err) {
