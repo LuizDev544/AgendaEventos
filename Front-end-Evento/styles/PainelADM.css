@@ -1,0 +1,172 @@
+body {
+  background: linear-gradient(135deg, #f9fafb, #eef2f7);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header h1 {
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.08);
+}
+
+.actions-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.btn-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.card-header {
+  font-size: 1.1rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+/* 🔧 CORREÇÃO: FORMULÁRIO COMO MODAL FLUTUANTE */
+#formEdicao {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 95%;
+  max-width: 900px;
+  max-height: 90vh;
+  background: white;
+  border: 2px solid #d1410c;
+  border-radius: 16px;
+  padding: 1.5rem;
+  z-index: 1000;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+#formEdicao.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 🔧 OVERLAY PARA ESCURECER O FUNDO */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+#overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 🔧 ESTILOS DO FORMULÁRIO */
+#formEdicao label {
+  margin-top: 0.6rem;
+  font-weight: 500;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+#formEdicao input {
+  margin-bottom: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+#formEdicao button {
+  margin-top: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+}
+
+#msgEdicao {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+thead.custom-header {
+    background-color: #d1410c;
+    color: white; 
+}
+
+.card-header.custom-orange {
+    background-color: #d1410c;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.display-5.fw-bold.texto-laranja {
+    color: #d1410c;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* 🔧 BOTÃO FECHAR NO FORMULÁRIO */
+.btn-close-form {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #d1410c;
+  cursor: pointer;
+}
+
+/* 🔧 TAMANHO DA TABELA AJUSTADO */
+.table {
+  font-size: 0.85rem;
+}
+
+.table th, .table td {
+  padding: 6px 8px;
+}
+
+.btn-sm {
+  padding: 3px 6px;
+  font-size: 0.8rem;
+}

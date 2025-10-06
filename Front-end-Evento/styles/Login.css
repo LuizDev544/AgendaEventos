@@ -1,0 +1,97 @@
+:root {
+    --primary-color: #1A80FF;
+    --primary-hover: #0066CC;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --input-border: #ccc;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0;
+}
+
+.login-container {
+    background-color: white;
+    padding: 2.5rem; 
+    border-radius: 0.75rem; 
+    box-shadow: var(--shadow); 
+    max-width: 400px;
+    width: 90%; 
+    text-align: center;
+}
+
+.bi bi-fingerprint {
+    color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; 
+}
+
+#username, #password {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--input-border);
+    border-radius: 0.5rem;
+    box-sizing: border-box; 
+    transition: border-color 0.3s ease;
+}
+
+#username:focus, #password:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 128, 255, 0.2); 
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+#a{
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+#msg {
+    margin-top: 1rem;
+    color: red;
+    font-size: 0.875rem;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excluir Evento</title>
+  <script src="../Front-end-Evento/scripts/Protection.js"></script>
+  <script src="scripts/Excluir.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="styles/Excluir.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+  <center>
+    <h1>Excluir Evento</h1>
+
+    <form class="search-form card" id="deleteForm">
+        <div class="search-group">
+            <label for="idevento" class="search-label">Insira o ID do Evento</label>
+            <input type="number" name="idevento" id="eventId" placeholder="Ex: 123" required>
+        </div>
+
+        <br>
+
+        <button id="btnExcluir" type="submit" class="btn-primary">
+          <i data-feather="trash-2"></i> Excluir Evento
+        </button>
+
+        <div class="actions-bar mb-4">
+            <a href="PainelADM.html" class="btn btn-primary btn-action shadow-sm">
+            <i data-feather="arrow-left"></i> <b>Retornar</b>
+          </a>
+        </div>
+
+        <b id="mensagem"></b>
+
+        <script>
+          feather.replace();
+        </script>
+    </form>
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1xI1LqxCGglcQZVVo_XEg-9r1zZ4tZfDE3A&s" width="75" height="75" alt="Eventos">
+  </center>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgendaMG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Front-end-Evento/styles/PainelUsuario.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">AgendaMG</a>
+            <form class="d-flex w-50" role="search">
+                <input class="form-control me-2" type="search" placeholder="Buscar eventos" aria-label="Search">
+                <button class="btn btn-outline-danger" type="submit">Buscar</button>
+            </form>
+            <div class="d-flex gap-3">
+                <a href="Login.html" class="btn btn-outline-danger">Área do Administrador</a>
+            </div>
+        </div>
+    </nav>
+    <section class="banner py-5">
+        <div class="container d-flex flex-wrap align-items-center justify-content-between">
+            <div class="texto-banner col-md-6">
+                <p class="text-danger fw-bold">Feito para</p>
+                <h1 class="fw-bold">Quem ama eventos</h1>
+            </div>
+            <div class="imagem-banner col-md-6">
+                <img src="../Front-end-Evento/imagem/Logo.jpg" class="img-fluid rounded" alt="Banner Evento">
+            </div>
+        </div>
+    </section>
+    <section class="categorias py-4 bg-light">
+        <div class="container d-flex flex-wrap justify-content-around text-center">
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/apple-music.svg" alt="">
+                <p>Música</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/award-fill.svg" alt="" srcset="">
+                <p>Palestras</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/brush-fill.svg" alt="" srcset="">
+                <p>Artes Dramáticas e Visuais</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/ethernet.svg" alt="" srcset="">
+                <p>Shows</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/hospital.svg" alt="" srcset="">
+                <p>Saúde</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/people-fill.svg" alt="" srcset="">
+                <p>Cosplay</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/person-standing.svg" alt="" srcset="">
+                <p>Academico Esportivo</p>
+            </div>
+            <div class="categoria p-3">
+                <img src="../Front-end-Evento/imagem/person-workspace.svg" alt="" srcset="">
+                <p>WorkShop</p>
+            </div>
+        </div>
+    </section>
+    <section class="eventos py-5">
+        <div class="container">
+            <h3 class="mb-4">Eventos Disponíveis</h3>
+            <div id="loading" class="text-center">
+                <div class="spinner-border text-danger" role="status">
+                    <span class="visually-hidden">Carregando...</span>
+                </div>
+                <p class="mt-2">Carregando eventos...</p>
+            </div>
+            <div id="listaEventos" class="row g-4" style="display: none;">
+                <!-- Cards serão carregados via JavaScript -->
+            </div>
+            <div id="semEventos" class="text-center" style="display: none;">
+                <p class="text-muted">Nenhum evento disponível no momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Front-end-Evento/scripts/PainelUsuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Evento</title>
+    <link rel="stylesheet" href="../Front-end-Evento/styles/ConsultarEvento.css">
+    <script src="../Front-end-Evento/scripts/Protection.js"></script>
+</head>
+<body>
+    <h1>Consultando Evento</h1>
+    <form class="Formulaio" action="">
+        <label for="">Insira o ID do evento</label>
+        <input type="number" name="idevento" id="idevento">
+        <button id="meubotao" type="button" onclick="consultarEvento()">Consultar Evento</button>
+        <button id="meubotao" type="button">
+            <a href="../Front-end-Evento/PainelADM.html">Voltar</a>
+        </button>
+        <div id="resultado" class="main-div">
+            <p>Dados do Evento</p>
+            <div>
+                <label for="txtnome">Nome do Evento</label>
+                <input type="text" name="txtnome" id="txtnome">
+            </div>
+            <div>
+                <label for="txtdescricao">Descrição do evento</label>
+                <input type="text" name="txtdescricao" id="txtdescricao">
+            </div>
+            <div>
+                <label for="txtdataevento">Data do Evento</label>
+                <input type="date" name="txtdataevento" id="txtdataevento">
+            </div>
+            <div>
+                <label for="txtlocal">Local do Evento</label>
+                <input type="text" name="txtlocal" id="txtlocal">
+            </div>
+            <div>
+                <label for="txtpreco">Preço do evento</label>
+                <input type="text" name="txtpreco" id="txtpreco">
+            </div>
+            <div>
+                <label for="txtcapacidade">Capacidade P/Pessoa</label>
+                <input type="text" name="txtcapacidade" id="txtcapacidade">
+            </div>
+            <div>
+                <label for="txttipo">Tipo do evento</label>
+                <input type="text" name="txttipo" id="txttipo">
+            </div>
+            <div>
+                <label for="txtapresentador">Apresentador</label>
+                <input type="text" name="txtapresentador" id="txtapresentador">
+            </div>
+            <div>
+                <label for="txtduracao">Duração do evento</label>
+                <input type="text" name="txtduracao" id="txtduracao">
+            </div>
+        </div>
+    </form>
+    <script src="scripts/Consultar.js"></script>
+</body>
+</html>

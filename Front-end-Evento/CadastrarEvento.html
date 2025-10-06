@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastrar Evento</title>
+  <link rel="stylesheet" href="../Front-end-Evento/styles/CadastrarEvento.css">
+  <script src="../Front-end-Evento/scripts/Protection.js"></script>
+</head>
+<body class="cadastro-bg">
+  <div class="form-container">
+    <h2 class="title">Cadastrar Novo Evento</h2>
+    <form id="formCadastro" class="form-grid">
+      <div class="form-group">
+        <label for="nomeEvento">Nome do Evento:</label>
+        <input type="text" id="nomeEvento" name="nomeEvento" required>
+      </div>
+      <div class="form-group full-width">
+        <label for="descricaoDoEvento">Descrição:</label>
+        <textarea id="descricaoDoEvento" name="descricaoDoEvento" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="dataDoEvento">Data do Evento:</label>
+        <input type="date" id="dataDoEvento" name="dataDoEvento" required>
+      </div>
+      <div class="form-group">
+        <label for="localDoEvento">Local do Evento:</label>
+        <input type="text" id="localDoEvento" name="localDoEvento" required>
+      </div>
+      <div class="form-group">
+        <label for="precoDoEvento">Preço do Evento (R$):</label>
+        <input type="number" id="precoDoEvento" name="precoDoEvento" step="0.01" min="0" required>
+      </div>
+      <div class="form-group">
+        <label for="capacidadeDePessoasNoEvento">Capacidade de Pessoas:</label>
+        <input type="number" id="capacidadeDePessoasNoEvento" name="capacidadeDePessoasNoEvento" min="1" required>
+      </div>
+      <div class="form-group">
+        <label for="tipoDoEvento">Tipo do Evento:</label>
+        <input type="text" id="tipoDoEvento" name="tipoDoEvento" required>
+      </div>
+      <div class="form-group">
+        <label for="apresentadorDoEvento">Apresentador:</label>
+        <input type="text" id="apresentadorDoEvento" name="apresentadorDoEvento" required>
+      </div>
+      <div class="form-group">
+        <label for="duracaoDoEvento">Duração do Evento:</label>
+        <input type="text" id="duracaoDoEvento" name="duracaoDoEvento" required>
+      </div>
+      <button type="submit" class="btn-primary full-width">Cadastrar</button>
+      <button type="button" class="btn-primary full-width" >
+        <a href="PainelADM.html">Voltar</a>
+      </button>
+    </form>
+    <p id="msg" class="message"></p>
+  </div>
+  <script src="../Front-end-Evento/scripts/authCheck.js"></script>
+  <script src="../Front-end-Evento/scripts/CadastrarEvento.js"></script>
+</body>
+</html>

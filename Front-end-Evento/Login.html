@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Front-end-Evento/styles/Login.css"> 
+    <title>Login ADM</title>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+</head>
+<body class="login-bg">
+    <div class="login-container">
+        <i data-feather="key" class="icon-primary"></i> 
+        
+        <h1>Login Administrador</h1>
+        
+        <form id="loginForm">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+        <br><br>
+        <a href="PainelUsuario.html"><button type="submit" class="btn-primary">Voltar</button></a>
+
+
+        <p id="msg"></p>
+    </div>
+
+    <script src="../Front-end-Evento/scripts/Login.js"></script>
+    <script>
+        feather.replace(); 
+    </script>
+
+    <script>
+    console.log("Login.html carregado");
+    console.log("Token no localStorage:", localStorage.getItem('jwtToken'));
+    console.log("UserData no localStorage:", localStorage.getItem('userData'));
+    </script>
+</body>
+</html>

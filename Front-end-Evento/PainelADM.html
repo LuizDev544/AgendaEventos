@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Administração</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../Front-end-Evento/styles/PainelADM.css">
+</head>
+
+<body>
+    <!-- 🔧 OVERLAY PARA ESCURECER FUNDO -->
+    <div id="overlay"></div>
+
+    <div class="container py-4 dashboard-container">
+
+        <header class="text-center mb-5">
+            <h1 class="display-5 fw-bold texto-laranja">Painel de Administração de Eventos</h1>
+            <p class="lead text-secondary">Gerencie seus eventos de maneira simples e rápida! Você pode adicionar novos
+                eventos, remover qualquer um, editar todos os campos e, por fim, consultar qualquer evento pelo seu ID.
+            </p>
+        </header>
+
+        <div class="actions-bar mb-5">
+            <a href="CadastrarEvento.html" class="btn btn-secondary btn-action shadow-sm">
+                <i data-feather="plus-circle"></i> Cadastrar Evento
+            </a>
+            <a href="ExcluirEvento.html" class="btn btn-danger btn-action shadow-sm">
+                <i data-feather="trash-2"></i> Excluir Evento
+            </a>
+            <a href="ConsultarEvento.html" class="btn btn-dark btn-action shadow-sm">
+                <i data-feather="search"></i> Consultar Evento
+            </a>
+            <button onclick="logout()" class="btn btn-outline-danger">Sair</button>
+        </div>
+
+        <div class="card shadow-sm">
+            <div class="card-header custom-orange">
+                Lista de Eventos Cadastrados
+            </div>
+            <div class="card-body p-0 table-responsive">
+                <table class="table table-striped table-hover mb-0" id="tabelaEventos">
+                    <thead class="custom-header">
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                            <th>Local</th>
+                            <th>Preço</th>
+                            <th>Capacidade</th>
+                            <th>Tipo</th>
+                            <th>Apresentador</th>
+                            <th>Duração</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Eventos carregados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <form id="formEdicao">
+        <button type="button" class="btn-close-form" onclick="fecharFormulario()">×</button>
+        <h5 class="mb-3" style="color: #d1410c;">✏️ Editar Evento</h5>
+        
+        <input type="hidden" id="inputId" name="id">
+
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="inputNome" class="form-label">Nome do Evento:</label>
+                <input type="text" id="inputNome" name="nomeEvento" class="form-control" required>
+            </div>
+            <div class="col-md-7">
+                <label for="inputDescricao" class="form-label">Descrição:</label>
+                <input type="text" id="inputDescricao" name="descricaoDoEvento" class="form-control">
+            </div>
+            <div class="col-md-1">
+                <label for="inputDuracao" class="form-label">Duração:</label>
+                <input type="text" id="inputDuracao" name="duracaoDoEvento" class="form-control">
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <div class="col-md-2">
+                <label for="inputData" class="form-label">Data:</label>
+                <input type="date" id="inputData" name="dataDoEvento" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label for="inputLocal" class="form-label">Local:</label>
+                <input type="text" id="inputLocal" name="localDoEvento" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label for="inputPreco" class="form-label">Preço:</label>
+                <input type="number" step="0.01" id="inputPreco" name="precoDoEvento" class="form-control">
+            </div>
+        </div>
+
+        <div class="row g-3 mt-2">
+            <div class="col-md-1">
+                <label for="inputCapacidade" class="form-label">Capacidade:</label>
+                <input type="number" id="inputCapacidade" name="capacidadeDePessoasNoEvento" class="form-control">
+            </div>
+            <div class="col-md-5">
+                <label for="inputTipo" class="form-label">Tipo:</label>
+                <input type="text" id="inputTipo" name="tipoDoEvento" class="form-control">
+            </div>
+            <div class="col-md-6">
+                <label for="inputApresentador" class="form-label">Apresentador:</label>
+                <input type="text" id="inputApresentador" name="apresentadorDoEvento" class="form-control">
+            </div>
+        </div>
+
+        <div class="mt-3 text-center">
+            <button type="submit" class="btn btn-success me-2">✅ Salvar Alterações</button>
+            <button type="button" class="btn btn-secondary" onclick="fecharFormulario()">❌ Cancelar</button>
+            <div id="msgEdicao" class="mt-3"></div>
+        </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script> 
+        feather.replace(); 
+        
+        // 🔧 FUNÇÃO PARA FECHAR FORMULÁRIO
+        function fecharFormulario() {
+            document.getElementById('formEdicao').classList.remove('show');
+            document.getElementById('overlay').classList.remove('show');
+        }
+        
+        // 🔧 FUNÇÃO LOGOUT
+        function logout() {
+            localStorage.removeItem('jwtToken');
+            localStorage.removeItem('userData');
+            window.location.href = "Login.html";
+        }
+    </script>
+    <script src="../Front-end-Evento/scripts/Editar.js"></script>
+</body>
+
+</html>
