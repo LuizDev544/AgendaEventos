@@ -6,17 +6,15 @@ async function deletarEvento() {
         return;
     }
 
-    // ✅ CONFIRMAÇÃO ANTES DE EXCLUIR (movida para antes da requisição)
     if (!confirm(`Tem certeza que deseja excluir o Evento ${id}?`)) {
         return;
     }
 
     const url = `http://localhost:8080/api/admin/eventos/${id}`;
-    const token = localStorage.getItem('jwtToken'); // ✅ Pega token JWT
+    const token = localStorage.getItem('jwtToken');
 
-    // ✅ VERIFICA SE TEM TOKEN
     if (!token) {
-        document.querySelector('#mensagem').innerText = "❌ Você não está logado!";
+        document.querySelector('#mensagem').innerText = "Você não está logado!";
         window.location.href = "Login.html";
         return;
     }
@@ -25,20 +23,20 @@ async function deletarEvento() {
         const resposta = await fetch(url, {
             method: 'DELETE',
             headers: {
-                'Authorization': `Bearer ${token}`, // ✅ JWT em vez de Basic Auth
+                'Authorization': `Bearer ${token}`,
                 'Content-Type': 'application/json'
             }
         });
 
         if (resposta.status === 404) {
-            document.querySelector('#mensagem').innerText = "❌ Evento não encontrado!";
+            document.querySelector('#mensagem').innerText = "Evento não encontrado!";
         } else if (resposta.status === 403) {
-            document.querySelector('#mensagem').innerText = "❌ Acesso negado! Token expirado.";
+            document.querySelector('#mensagem').innerText = "Acesso negado! Token expirado.";
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             setTimeout(() => window.location.href = "Login.html", 2000);
         } else if (resposta.status === 401) {
-            document.querySelector('#mensagem').innerText = "❌ Não autorizado! Faça login novamente.";
+            document.querySelector('#mensagem').innerText = "Não autorizado! Faça login novamente.";
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             setTimeout(() => window.location.href = "Login.html", 2000);
@@ -46,11 +44,11 @@ async function deletarEvento() {
             document.querySelector('#mensagem').innerText = "✅ Evento excluído com sucesso!";
             document.querySelector('#deleteForm').reset();
         } else {
-            document.querySelector('#mensagem').innerText = "❌ Erro ao excluir evento!";
+            document.querySelector('#mensagem').innerText = "Erro ao excluir evento!";
         }
 
     } catch (erro) {
-        document.querySelector('#mensagem').innerText = "❌ Erro de conexão! Verifique se o servidor está rodando.";
+        document.querySelector('#mensagem').innerText = "Erro de conexão! Verifique se o servidor está rodando.";
         console.error("Erro ao excluir evento:", erro);
     }
 }
@@ -64,18 +62,16 @@ document.getElementById('Recarregar').addEventListener('click', function () {
     location.reload();
 });
 
-// ✅ VERIFICA AUTENTICAÇÃO AO CARREGAR A PÁGINA
 document.addEventListener('DOMContentLoaded', async function() {
     const token = localStorage.getItem('jwtToken');
     
     if (!token) {
-        alert("❌ Você precisa estar logado para acessar esta página!");
+        alert("Você precisa estar logado para acessar esta página!");
         window.location.href = "Login.html";
         return;
     }
 
     try {
-        // ✅ VALIDA O TOKEN
         const resp = await fetch("http://localhost:8080/auth/validate", {
             method: "POST",
             headers: {
@@ -87,17 +83,17 @@ document.addEventListener('DOMContentLoaded', async function() {
         const data = await resp.json();
         
         if (!data.valid) {
-            alert("❌ Sessão expirada! Faça login novamente.");
+            alert("Sessão expirada! Faça login novamente.");
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             window.location.href = "Login.html";
         } else {
-            console.log("✅ Usuário autenticado:", data.usuario);
+            console.log("Usuário autenticado:", data.usuario);
         }
         
     } catch (err) {
         console.error("Erro ao validar token:", err);
-        alert("❌ Erro de autenticação!");
+        alert("Erro de autenticação!");
         window.location.href = "Login.html";
     }
 });

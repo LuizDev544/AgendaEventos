@@ -10,9 +10,7 @@
 </head>
 
 <body>
-    <!-- 🔧 OVERLAY PARA ESCURECER FUNDO -->
     <div id="overlay"></div>
-
     <div class="container py-4 dashboard-container">
 
         <header class="text-center mb-5">
@@ -57,7 +55,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Eventos carregados via JavaScript -->
+
                     </tbody>
                 </table>
             </div>
@@ -66,7 +64,7 @@
 
     <form id="formEdicao">
         <button type="button" class="btn-close-form" onclick="fecharFormulario()">×</button>
-        <h5 class="mb-3" style="color: #d1410c;">✏️ Editar Evento</h5>
+        <h5 class="mb-3" style="color: #d1410c;">Editar Evento</h5>
         
         <input type="hidden" id="inputId" name="id">
 
@@ -116,8 +114,8 @@
         </div>
 
         <div class="mt-3 text-center">
-            <button type="submit" class="btn btn-success me-2">✅ Salvar Alterações</button>
-            <button type="button" class="btn btn-secondary" onclick="fecharFormulario()">❌ Cancelar</button>
+            <button type="submit" class="btn btn-success me-2">Salvar Alterações</button>
+            <button type="button" class="btn btn-secondary" onclick="fecharFormulario()">Cancelar</button>
             <div id="msgEdicao" class="mt-3"></div>
         </div>
     </form>
@@ -126,14 +124,12 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script> 
         feather.replace(); 
-        
-        // 🔧 FUNÇÃO PARA FECHAR FORMULÁRIO
+
         function fecharFormulario() {
             document.getElementById('formEdicao').classList.remove('show');
             document.getElementById('overlay').classList.remove('show');
         }
-        
-        // 🔧 FUNÇÃO LOGOUT
+
         function logout() {
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
