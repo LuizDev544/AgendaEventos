@@ -155,7 +155,7 @@ function obterImagemPorTipo(tipo) {
         'Cultural': 'imagem/SuperIdol.gif',
         'Musical': 'imagem/Yeee.gif',
         'Acadêmico': 'imagem/academico.jpg',
-        'Festival': 'imagem/Festival.webp',
+        'Festival': 'imagem/Coxinha.gif',
         'Feira': 'imagem/SoKquiGrandao.gif'
     };
 
