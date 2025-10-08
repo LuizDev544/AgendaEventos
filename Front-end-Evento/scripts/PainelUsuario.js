@@ -159,7 +159,7 @@ function obterImagemPorTipo(tipo) {
         'Feira': 'imagem/SoKquiGrandao.gif'
     };
 
-    if (!tipo) return 'imagem/freedy.png';
+    if (!tipo) return 'imagem/freedy.jpg';
 
     for (const [key, caminho] of Object.entries(imagens)) {
         if (tipo.toLowerCase().includes(key.toLowerCase())) {
