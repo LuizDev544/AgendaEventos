@@ -147,19 +147,19 @@ function formatarData(dataString) {
 
 function obterImagemPorTipo(tipo) {
     const imagens = {
-        'Show': 'imagem/Domino.webp',
+        'Show': 'imagem/show.jpg',
         'Palestra': 'imagem/Palestra.jpg',
         'Workshop': 'imagem/workshop.jpg',
         'Teatro': 'imagem/Teatro.jpg',
-        'Esportivo': 'imagem/SonicBugado.webp',
-        'Cultural': 'imagem/SuperIdol.gif',
-        'Musical': 'imagem/Yeee.gif',
+        'Esportivo': 'imagem/esportivo.jpg',
+        'Cultural': 'imagem/cultural.jpg',
+        'Musical': 'imagem/musical.jpg',
         'Acadêmico': 'imagem/academico.jpg',
-        'Festival': 'imagem/Coxinha.gif',
-        'Feira': 'imagem/SoKquiGrandao.gif'
+        'Festival': 'imagem/Festival.webp',
+        'Feira': 'imagem/feira.jpg'
     };
 
-    if (!tipo) return 'imagem/freedy.jpg';
+    if (!tipo) return 'imagem/confuso.webp';
 
     for (const [key, caminho] of Object.entries(imagens)) {
         if (tipo.toLowerCase().includes(key.toLowerCase())) {

@@ -80,27 +80,27 @@ body {
 }
 
 .card-header.bg-show {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
+    background: linear-gradient(135deg, #ff6b6b, #c2443d) !important;
 }
 
 .card-header.bg-palestra {
-    background: linear-gradient(135deg, #4ecdc4, #44a08d) !important;
+    background: linear-gradient(135deg, #c99239, #a18a24) !important;
 }
 
 .card-header.bg-workshop {
-    background: linear-gradient(135deg, #45b7d1, #96c93d) !important;
+    background: linear-gradient(135deg, #45b7d1, #5d54e4) !important;
 }
 
 .card-header.bg-teatro {
-    background: linear-gradient(135deg, #f093fb, #f5576c) !important;
+    background: linear-gradient(135deg, #e2a637, #d12e44) !important;
 }
 
 .card-header.bg-esportivo {
-    background: linear-gradient(135deg, #4facfe, #00f2fe) !important;
+    background: linear-gradient(135deg, #39d377, #00f2fe) !important;
 }
 
 .card-header.bg-cultural {
-    background: linear-gradient(135deg, #a8edea, #fed6e3) !important;
+    background: linear-gradient(135deg, #d87b10, #fed6e3) !important;
     color: #333 !important;
 }
 
