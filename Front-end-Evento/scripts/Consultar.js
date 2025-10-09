@@ -1,4 +1,3 @@
-// ✅ VERIFICA AUTENTICAÇÃO AO CARREGAR
 document.addEventListener('DOMContentLoaded', function() {
     console.log("🔍 Consultar.js carregado");
     verificarAutenticacao();
@@ -38,7 +37,6 @@ async function verificarAutenticacao() {
     }
 }
 
-// ✅ FUNÇÃO PARA MOSTRAR EVENTO NO FORMULÁRIO
 function mostrarEvento(evento) {
     console.log("Preenchendo formulário com dados do evento:", evento);
     
@@ -52,10 +50,9 @@ function mostrarEvento(evento) {
     document.querySelector('#txtapresentador').value = evento.apresentadorDoEvento || 'Não informado';
     document.querySelector('#txtduracao').value = evento.duracaoDoEvento || 'Não informado';
     
-    console.log("✅ Formulário preenchido com sucesso!");
+    console.log("Formulário preenchido com sucesso!");
 }
 
-// ✅ FUNÇÃO PARA CONSULTAR EVENTO
 async function consultarEvento() {
     const id = document.querySelector('#idevento').value.trim();
     
@@ -66,7 +63,6 @@ async function consultarEvento() {
         return;
     }
 
-    // ✅ ENDPOINT PÚBLICO
     const url = `http://localhost:8080/api/public/eventos/${id}`;
     
     console.log("Usando endpoint público:", url);
@@ -87,8 +83,6 @@ async function consultarEvento() {
             console.log("Evento não encontrado");
             alert("Evento com ID: " + id + " não encontrado");
             document.getElementById('resultado').style.display = 'none';
-            
-            // ✅ LIMPA OS CAMPOS SE NÃO ENCONTRAR
             limparCampos();
         } else {
             console.log("Erro desconhecido:", resposta.status);

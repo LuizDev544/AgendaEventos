@@ -1,15 +1,13 @@
-// ✅ VERIFICA AUTENTICAÇÃO AO CARREGAR
 document.addEventListener("DOMContentLoaded", async () => {
     const token = localStorage.getItem('jwtToken');
     
     if (!token) {
-        alert("❌ Você precisa estar logado para acessar esta página!");
+        alert("🗿 Você precisa estar logado para acessar esta página!");
         window.location.href = "Login.html";
         return;
     }
 
     try {
-        // ✅ VALIDA O TOKEN
         const resp = await fetch("http://localhost:8080/auth/validate", {
             method: "POST",
             headers: {
@@ -21,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const data = await resp.json();
         
         if (!data.valid) {
-            alert("❌ Sessão expirada! Faça login novamente.");
+            alert("Sessão expirada! Faça login novamente.");
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             window.location.href = "Login.html";
@@ -29,13 +27,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
 
         console.log("✅ Usuário autenticado:", data.usuario);
-        
-        // ✅ INICIALIZA EVENT LISTENERS PRIMEIRO
         inicializarEventListeners();
-        
-        // ✅ DEPOIS CARREGA EVENTOS
         await carregarEventos();
-        
     } catch (err) {
         console.error("Erro ao validar token:", err);
         alert("❌ Erro de autenticação!");
@@ -43,41 +36,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// ✅ FUNÇÃO PARA INICIALIZAR TODOS OS EVENT LISTENERS
 function inicializarEventListeners() {
-    // ✅ FORMULÁRIO DE EDIÇÃO
+
     const formEdicao = document.getElementById("formEdicao");
     if (formEdicao) {
         formEdicao.addEventListener("submit", enviarEdicao);
     }
 
-    // ✅ OVERLAY - COM VERIFICAÇÃO DE NULL
     const overlay = document.getElementById("overlay");
     if (overlay) {
         overlay.addEventListener('click', fecharFormulario);
     } else {
-        console.warn("⚠️ Elemento overlay não encontrado");
+        console.warn("Elemento overlay não encontrado");
     }
 
-    // ✅ BOTÃO CANCELAR - COM VERIFICAÇÃO
     const btnCancelar = document.getElementById("btnCancelarEdicao");
     if (btnCancelar) {
         btnCancelar.addEventListener("click", fecharFormulario);
     }
 
-    // ✅ BOTÃO RECARREGAR - COM VERIFICAÇÃO
     if (document.getElementById('Recarregar')) {
         document.getElementById('Recarregar').addEventListener('click', carregarEventos);
     }
 }
 
-// ✅ FUNÇÃO SEPARADA PARA ENVIAR EDIÇÃO
 async function enviarEdicao(e) {
     e.preventDefault();
 
     const token = localStorage.getItem('jwtToken');
     if (!token) {
-        alert("❌ Sessão expirada! Faça login novamente.");
+        alert("Sessão expirada! Faça login novamente.");
         window.location.href = "Login.html";
         return;
     }
@@ -106,7 +94,7 @@ async function enviarEdicao(e) {
         });
 
         if (res.status === 401 || res.status === 403) {
-            alert("❌ Sessão expirada! Faça login novamente.");
+            alert("Sessão expirada! Faça login novamente.");
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             window.location.href = "Login.html";
@@ -117,18 +105,17 @@ async function enviarEdicao(e) {
             throw new Error(`Erro ${res.status} ao atualizar evento`);
         }
 
-        document.getElementById("msgEdicao").innerText = "✅ Evento atualizado com sucesso!";
+        document.getElementById("msgEdicao").innerText = "Evento atualizado com sucesso!";
         document.getElementById("msgEdicao").style.color = "green";
 
-        // ✅ FECHA FORMULÁRIO E RECARREGA LISTA
         setTimeout(() => {
             fecharFormulario();
             carregarEventos();
         }, 1000);
 
     } catch (err) {
-        console.error("❌ Erro ao atualizar evento:", err);
-        document.getElementById("msgEdicao").innerText = "❌ Falha ao atualizar evento!";
+        console.error("Erro ao atualizar evento:", err);
+        document.getElementById("msgEdicao").innerText = "Falha ao atualizar evento!";
         document.getElementById("msgEdicao").style.color = "red";
     }
 }
@@ -142,7 +129,6 @@ function criarBotaoEditar(linha) {
         const form = document.getElementById('formEdicao');
         const overlay = document.getElementById('overlay');
 
-        // ✅ PREENCHE FORMULÁRIO COM DADOS DO EVENTO
         document.getElementById('inputId').value = linha.dataset.id;
         document.getElementById('inputNome').value = linha.children[1].textContent;
         document.getElementById('inputDescricao').value = linha.children[2].textContent;
@@ -154,7 +140,6 @@ function criarBotaoEditar(linha) {
         document.getElementById('inputApresentador').value = linha.children[8].textContent;
         document.getElementById('inputDuracao').value = linha.children[9].textContent;
 
-        // ✅ ABRE MODAL
         if (form) form.classList.add('show');
         if (overlay) overlay.classList.add('show');
     });
@@ -166,7 +151,7 @@ async function carregarEventos() {
     const token = localStorage.getItem('jwtToken');
     
     if (!token) {
-        console.error("❌ Token não encontrado");
+        console.error("Token não encontrado");
         return;
     }
 
@@ -179,7 +164,7 @@ async function carregarEventos() {
         });
 
         if (res.status === 401 || res.status === 403) {
-            alert("❌ Sessão expirada! Faça login novamente.");
+            alert("Sessão expirada! Faça login novamente.");
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');
             window.location.href = "Login.html";
@@ -194,7 +179,7 @@ async function carregarEventos() {
 
         const tbody = document.querySelector('#tabelaEventos tbody');
         if (!tbody) {
-            console.error("❌ Tabela não encontrada");
+            console.error("Tabela não encontrada");
             return;
         }
         
@@ -231,7 +216,7 @@ async function carregarEventos() {
         });
 
     } catch (err) {
-        console.error('❌ Erro ao carregar eventos:', err);
+        console.error('Erro ao carregar eventos:', err);
         const tbody = document.querySelector('#tabelaEventos tbody');
         if (tbody) {
             tbody.innerHTML = '<tr><td colspan="11" class="text-center text-danger">Erro ao carregar eventos</td></tr>';
@@ -239,7 +224,6 @@ async function carregarEventos() {
     }
 }
 
-// ✅ FUNÇÃO PARA FECHAR FORMULÁRIO
 function fecharFormulario() {
     const form = document.getElementById('formEdicao');
     const overlay = document.getElementById('overlay');
@@ -250,7 +234,6 @@ function fecharFormulario() {
     if (msgEdicao) msgEdicao.innerText = "";
 }
 
-// ✅ VERIFICA SE O OVERLAY EXISTE ANTES DE ADICIONAR EVENT LISTENER
 document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.getElementById('overlay');
     if (overlay) {

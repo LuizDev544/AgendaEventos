@@ -31,12 +31,12 @@ public class AuthService {
             return senhaCorreta;
         }
         
-        System.out.println("❌ Admin NÃO encontrado na tabela admin");
+        System.out.println("Admin NÃO encontrado na tabela admin");
         return false;
     }
 
     public boolean isAdmin(String email) {
-        return true; // Todos são admin
+        return true; 
     }
 
     public String getRoleFromDatabase(String email) {

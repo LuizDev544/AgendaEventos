@@ -34,8 +34,7 @@ function exibirEventos(eventos) {
     const container = document.getElementById('listaEventos');
     const loading = document.getElementById('loading');
     const semEventos = document.getElementById('semEventos');
-    
-    // Esconde loading
+
     loading.style.display = 'none';
     
     if (!eventos || eventos.length === 0) {
@@ -74,7 +73,7 @@ function criarCardEvento(evento) {
                 background-position: center;
                 position: absolute;
                 inset: 0;
-                opacity: 0.4;
+                filter: brightness(0.4);
                 z-index: 0;
             "></div>
 

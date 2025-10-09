@@ -10,11 +10,8 @@
 </head>
 
 <body>
-    <!-- 🔧 OVERLAY PARA ESCURECER FUNDO -->
     <div id="overlay"></div>
-
     <div class="container py-4 dashboard-container">
-
         <header class="text-center mb-5">
             <h1 class="display-5 fw-bold texto-laranja">Painel de Administração de Eventos</h1>
             <p class="lead text-secondary">Gerencie seus eventos de maneira simples e rápida! Você pode adicionar novos
@@ -126,14 +123,12 @@
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <script> 
         feather.replace(); 
-        
-        // 🔧 FUNÇÃO PARA FECHAR FORMULÁRIO
+
         function fecharFormulario() {
             document.getElementById('formEdicao').classList.remove('show');
             document.getElementById('overlay').classList.remove('show');
         }
-        
-        // 🔧 FUNÇÃO LOGOUT
+
         function logout() {
             localStorage.removeItem('jwtToken');
             localStorage.removeItem('userData');

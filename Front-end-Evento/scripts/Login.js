@@ -51,10 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     role: data.role
                 }));
 
-                msg.textContent = "✅ Login realizado com sucesso!";
+                msg.textContent = "Login realizado com sucesso!";
                 msg.style.color = "green";
-                
-                // Redireciona para o painel ADMIN
+
                 setTimeout(() => {
                     window.location.href = "PainelADM.html";
                 }, 1000);

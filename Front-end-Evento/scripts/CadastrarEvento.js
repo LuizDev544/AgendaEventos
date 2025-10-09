@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             msg.textContent = "Erro: " + err.message;
             msg.style.color = "red";
             
-            // Se foi erro de autenticação, redireciona para login
             if (err.message.includes("Acesso negado") || err.message.includes("Token")) {
                 localStorage.removeItem('jwtToken');
                 localStorage.removeItem('userData');
